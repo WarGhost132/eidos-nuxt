@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: #F4F4F8;
+		--foreground: #2F3144;
+		
+		--sidebar: #FFFFFF;
+		--input: #FFFFFF;
+		--border: #E0E0E0;
+		
+		--primary: #3761F3;
+		--primary-foreground: #FFFFFF;
+		
+		--secondary: #F4F4F4;
+		--secondary-foreground: #2F3144;
+		
+		--table-header: #F5F7F9;
+		--table-border: #E8EAEC;
+		
+		--badge-planned: #AFBFF5;
+		--badge-proccess: #FFDAA1;
+		--badge-done: #91C893;
+		
+		--card: #FFFFFF;
+		--card-foreground: 234 18% 23% 65%;
+		
+		--radius: '12px';
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	html {
+		font-size: 15px;
+	}
+	body {
+		@apply bg-background text-foreground text-base;
+		font-family: 'Manrope', sans-serif;
+	}
+}
