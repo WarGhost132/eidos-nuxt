@@ -11,10 +11,10 @@ export default {
       }
     },
     fontSize: {
-      sm: '0,87rem',
+      sm: '0.87rem',
       base: '1rem',
-      lg: '1,13rem',
-      xl: '1,6rem'
+      lg: '1.13rem',
+      xl: '1.6rem'
     },
     extend: {
       transitionDuration: {
@@ -42,10 +42,6 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      borderRadius: {
-        sm: 'var(--radius)',
-        md: 'calc(var(--radius) + 4px)'
-      }
     },
   },
   plugins: [],
