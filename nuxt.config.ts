@@ -11,5 +11,9 @@ export default defineNuxtConfig({
         }
       }
     }
-  ], '@nuxt/image', '@pinia/nuxt']
+  ], '@nuxt/image', '@pinia/nuxt'],
+  
+  pinia: {
+    storesDirs: ['./store/**']
+  }
 })

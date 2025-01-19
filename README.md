@@ -4,6 +4,9 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
+Login: barnaby@test.ru
+Password: 12345678
+
 Make sure to install dependencies:
 
 ```bash

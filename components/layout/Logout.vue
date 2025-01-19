@@ -1,12 +1,24 @@
 <script setup lang="ts">
-import { useSidebarSlideStore } from '~/store/sidebar-slide.store'
+import { account } from '~/libs/appwrite'
 
 const store = useSidebarSlideStore()
+const authStore = useAuthStore()
+const router = useRouter()
+const isLoadingStore = useIsLoadingStore()
+
+const logout = async() => {
+  isLoadingStore.set(true)
+  await account.deleteSession('current')
+  authStore.clear()
+  await router.push('/login')
+  isLoadingStore.set(false)
+}
 </script>
 <template>
   <button
     class="flex items-center p-3 hover:text-black"
     :class="{'justify-center w-full': store.isCollapsed}"
+    @click="logout"
   >
     <Icon
       name="ph:sign-out"

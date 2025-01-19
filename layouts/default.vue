@@ -1,12 +1,28 @@
 <script setup lang="ts">
-import { useSidebarSlideStore } from '~/store/sidebar-slide.store'
+
+import { account } from '~/libs/appwrite'
 
 const store = useSidebarSlideStore()
+const isLoadingStore = useIsLoadingStore()
+const authStore = useAuthStore()
+const router = useRouter()
+
+onMounted(async() => {
+  try {
+    const user = await account.get()
+    if (user) authStore.set(user)
+  } catch (error) {
+    await router.push('/login')
+  } finally {
+    isLoadingStore.set(false)
+  }
+})
 </script>
 
 <template>
-  <section class="grid" style="min-height: 100vh">
-    <LayoutSidebar class="sidebar transition-all" :style="{width: store.isCollapsed ? '114px' : '274px'}" />
+  <LayoutLoader v-if="isLoadingStore.isLoading" />
+  <section v-else :class="{grid: authStore.isAuth}" style="min-height: 100vh">
+    <LayoutSidebar v-if="authStore.isAuth" class="sidebar transition-all" :style="{width: store.isCollapsed ? '114px' : '274px'}" />
     <div class="content">
       <slot />
     </div>

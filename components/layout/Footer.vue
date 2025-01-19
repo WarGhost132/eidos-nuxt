@@ -12,7 +12,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useSidebarSlideStore } from '~/store/sidebar-slide.store'
-
 const store = useSidebarSlideStore()
 </script>

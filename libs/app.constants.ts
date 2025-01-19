@@ -1,0 +1,6 @@
+export const APP_WRITE_ID = 'eidos-nuxt'
+export const DB_ID = 'sim-center-nuxt-eidos'
+export const COLLECTIONS_SESSIONS = 'sessions'
+export const COLLECTIONS_GROUPS = 'study-groups'
+export const COLLECTIONS_ROOMS = 'rooms'
+export const COLLECTIONS_USERS = 'users'
