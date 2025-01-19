@@ -1,11 +1,11 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Home'
+  title: 'Учебные сессии'
 })
 </script>
 
 <template>
-  <div class="p-10">
-    <h1>Hello World!</h1>
+  <div class="bg-card rounded-t-xl p-6">
+    <SessionHeader />
   </div>
 </template>

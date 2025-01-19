@@ -26,9 +26,9 @@ const store = useSidebarSlideStore()
 
 .content {
   grid-area: content;
-  max-width: 1600px;
+  max-width: 1780px;
   justify-self: center;
-  padding: 24px 16px;
+  padding: 8px;
   width: 100%;
 }
 </style>
