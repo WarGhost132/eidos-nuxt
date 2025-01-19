@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Настройки системы'
+})
+</script>
+
 <template>
   <div>
     <h1>

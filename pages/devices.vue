@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Список устройств'
+})
+</script>
+
 <template>
   <div>
     <h1>

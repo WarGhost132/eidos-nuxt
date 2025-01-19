@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Архив'
+})
+</script>
+
 <template>
   <div>
     <h1>
