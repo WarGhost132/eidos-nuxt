@@ -1,24 +1,10 @@
+import { writeFileSync } from 'fs'
 import { v4 as uuid } from 'uuid'
 
-type TableStatus = 'Запланировано' | 'Идет' | 'Завершено';
-
-type TableType = 'Урок' | 'Аккредитация' | 'Экзамен';
-
-interface ITableData {
-  id: string;
-  date: string;
-  time: string;
-  status: TableStatus;
-  name: string;
-  type: TableType;
-  room: string[];
-  group: string;
-}
-
-const generateTableData = (): ITableData[] => {
-  const tableData: ITableData[] = [];
-  const statuses: TableStatus[] = ['Запланировано', 'Идет', 'Завершено'];
-  const types: TableType[] = ['Урок', 'Аккредитация', 'Экзамен'];
+const generateTableData = () => {
+  const tableData = [];
+  const statuses = ['Запланировано', 'Идет', 'Завершено'];
+  const types = ['Урок', 'Аккредитация', 'Экзамен'];
   const names = [
     'Ультразвуковое исследование органов брюшной полости и забрюшинного пространства',
     'Ультразвуковое абдоминальное исследование мочевого пузыря (для мужчин) и предстательной железы',
@@ -57,4 +43,7 @@ const generateTableData = (): ITableData[] => {
   return tableData;
 };
 
-export const TABLE_DATA = generateTableData();
+const tableData = generateTableData();
+
+writeFileSync('data/tableData.json', JSON.stringify(tableData, null, 2), 'utf-8');
+console.log('Данные успешно записаны в tableData.json');
