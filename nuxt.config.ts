@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  modules: ['@nuxt/icon', '@nuxtjs/tailwindcss', [
+  modules: ['@nuxt/image', '@pinia/nuxt', [
     '@nuxtjs/google-fonts',
     {
       families: {
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         }
       }
     }
-  ], '@nuxt/image', '@pinia/nuxt'],
+  ], '@nuxtjs/tailwindcss', '@nuxt/icon'],
   
   pinia: {
     storesDirs: ['./store/**']

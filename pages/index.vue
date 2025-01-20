@@ -7,5 +7,6 @@ useSeoMeta({
 <template>
   <div class="bg-card rounded-t-xl p-6">
     <SessionHeader />
+    <SessionTable />
   </div>
 </template>
