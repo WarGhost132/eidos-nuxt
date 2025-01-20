@@ -1,11 +1,19 @@
 <script setup lang="ts">
-const value = ''
+import { useSearchStore } from '~/store/search-store'
+
+const searchStore = useSearchStore()
+
+function onInput(event: Event) {
+  const target = event.target as HTMLInputElement
+  searchStore.setSearchQuery(target.value)
+}
 </script>
 
 <template>
   <div class="relative">
     <input
-      v-model="value"
+      :value="searchStore.searchQuery"
+      @input="onInput"
       class="border border-border rounded-xl w-[260px] h-[44px] pr-2 py-3 pl-12"
       placeholder="Поиск"
     />
