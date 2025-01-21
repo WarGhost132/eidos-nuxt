@@ -83,7 +83,7 @@
       </tbody>
     </table>
     <div class="w-full bg-secondary p-3">
-      <div class="wrapper w-[400px] flex justify-between">
+      <div class="wrapper flex gap-4">
         <button
           :disabled="currentPage === 1"
           @click="currentPage--"
@@ -121,10 +121,11 @@
 import { usePagination } from '~/hooks/usePagination'
 import { useSort } from '~/hooks/useSort'
 import { useSearchStore } from '~/store/search-store'
+import { useData } from '~/hooks/useData'
 
 const searchStore = useSearchStore()
 
-const { data: tableData } = await useFetch('/api/tableData')
+const tableData = await useData()
 
 const maxItemsPerPage = 11
 

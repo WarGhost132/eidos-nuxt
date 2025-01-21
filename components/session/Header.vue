@@ -6,5 +6,9 @@
       <SessionFilter />
       <SessionCreate />
     </div>
+    <UiPopover>
+      <span class="flex font-extrabold text-lg justify-center mb-4">Фильтр</span>
+      <SessionFilterForm />
+    </UiPopover>
   </div>
 </template>
