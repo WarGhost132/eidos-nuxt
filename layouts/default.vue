@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import { account } from '~/libs/appwrite'
 
 const store = useSidebarSlideStore()
@@ -7,7 +6,7 @@ const isLoadingStore = useIsLoadingStore()
 const authStore = useAuthStore()
 const router = useRouter()
 
-onMounted(async() => {
+onMounted(async () => {
   try {
     const user = await account.get()
     if (user) authStore.set(user)
@@ -21,8 +20,12 @@ onMounted(async() => {
 
 <template>
   <LayoutLoader v-if="isLoadingStore.isLoading" />
-  <section v-else :class="{grid: authStore.isAuth}" style="min-height: 100vh">
-    <LayoutSidebar v-if="authStore.isAuth" class="sidebar transition-all" :style="{width: store.isCollapsed ? '114px' : '274px'}" />
+  <section v-else :class="{ grid: authStore.isAuth }" style="min-height: 100vh">
+    <LayoutSidebar
+      v-if="authStore.isAuth"
+      class="sidebar transition-all"
+      :style="{ width: store.isCollapsed ? '114px' : '274px' }"
+    />
     <div class="content">
       <slot />
     </div>
@@ -32,7 +35,7 @@ onMounted(async() => {
 <style scoped>
 .grid {
   display: grid;
-  grid-template-areas: "sidebar content";
+  grid-template-areas: 'sidebar content';
   grid-template-columns: min-content 1fr;
 }
 

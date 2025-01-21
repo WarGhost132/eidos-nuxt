@@ -1,28 +1,28 @@
 import type { Config } from 'tailwindcss'
 
 /** @type {import('tailwindcss').Config} */
-export default <Partial<Config>> {
+export default <Partial<Config>>{
   darkMode: ['class'],
   theme: {
     container: {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px'
-      }
+        '2xl': '1400px',
+      },
     },
     fontSize: {
       sm: '0.87rem',
       base: '1rem',
       lg: '1.13rem',
-      xl: '1.6rem'
+      xl: '1.6rem',
     },
     extend: {
       transitionDuration: {
-        DEFAULT: '333ms'
+        DEFAULT: '333ms',
       },
       transitionTimingFunction: {
-        DEFAULT: 'ease-in-out'
+        DEFAULT: 'ease-in-out',
       },
       colors: {
         border: 'var(--border)',
@@ -47,4 +47,3 @@ export default <Partial<Config>> {
   },
   plugins: [],
 }
-

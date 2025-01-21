@@ -1,5 +1,5 @@
 const defaultValue: { isCollapsed: boolean } = {
-  isCollapsed: false
+  isCollapsed: false,
 }
 
 export const useSidebarSlideStore = defineStore('sidebar-slide', {
@@ -7,6 +7,6 @@ export const useSidebarSlideStore = defineStore('sidebar-slide', {
   actions: {
     toggle() {
       this.isCollapsed = !this.isCollapsed
-    }
-  }
+    },
+  },
 })

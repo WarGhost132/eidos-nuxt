@@ -1,34 +1,34 @@
 interface IAuthStore {
-  email: string,
-  status: boolean,
+  email: string
+  status: boolean
   errorMessage: string | null
 }
 
-const defaultValue: {user: IAuthStore} = {
+const defaultValue: { user: IAuthStore } = {
   user: {
     email: '',
     status: false,
-    errorMessage: null
-  }
+    errorMessage: null,
+  },
 }
 
 export const useAuthStore = defineStore('auth', {
   state: () => defaultValue,
   getters: {
-    isAuth: state => state.user.status,
-    errorMessage: state => state.user.errorMessage
+    isAuth: (state) => state.user.status,
+    errorMessage: (state) => state.user.errorMessage,
   },
   actions: {
-    clear(){
+    clear() {
       this.$patch(defaultValue)
     },
-    set(input: IAuthStore){
-      this.$patch({user: input})
+    set(input: IAuthStore) {
+      this.$patch({ user: input })
     },
     setErrorMessage(message: string) {
-      this.$patch({user: {...this.user, errorMessage: message}})
-    }
-  }
+      this.$patch({ user: { ...this.user, errorMessage: message } })
+    },
+  },
 })
 
 export const useIsLoadingStore = defineStore('isLoading', {

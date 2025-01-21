@@ -6,7 +6,7 @@ const authStore = useAuthStore()
 const router = useRouter()
 const isLoadingStore = useIsLoadingStore()
 
-const logout = async() => {
+const logout = async () => {
   isLoadingStore.set(true)
   await account.deleteSession('current')
   authStore.clear()
@@ -17,7 +17,7 @@ const logout = async() => {
 <template>
   <button
     class="flex items-center p-3 hover:text-black"
-    :class="{'justify-center w-full': store.isCollapsed}"
+    :class="{ 'justify-center w-full': store.isCollapsed }"
     @click="logout"
   >
     <Icon
@@ -28,6 +28,6 @@ const logout = async() => {
         'mr-3': !store.isCollapsed,
       }"
     />
-    <span class="font-bold" v-if="!store.isCollapsed">Выйти</span>
+    <span v-if="!store.isCollapsed" class="font-bold">Выйти</span>
   </button>
 </template>

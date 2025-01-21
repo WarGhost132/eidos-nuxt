@@ -1,5 +1,5 @@
 const defaultValue: { searchQuery: string } = {
-  searchQuery: ''
+  searchQuery: '',
 }
 
 export const useSearchStore = defineStore('search', {
@@ -7,6 +7,6 @@ export const useSearchStore = defineStore('search', {
   actions: {
     setSearchQuery(query: string) {
       this.searchQuery = query
-    }
-  }
+    },
+  },
 })

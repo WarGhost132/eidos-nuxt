@@ -1,13 +1,11 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Архив'
+  title: 'Архив',
 })
 </script>
 
 <template>
   <div>
-    <h1>
-      Страница архива
-    </h1>
+    <h1>Страница архива</h1>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Пользователи'
+  title: 'Пользователи',
 })
 </script>
 

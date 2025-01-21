@@ -2,8 +2,8 @@
 const badgeStatus = defineProps({
   status: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const badgeClass = computed(() => {

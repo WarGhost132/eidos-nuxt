@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Список комнат'
+  title: 'Список комнат',
 })
 </script>
 

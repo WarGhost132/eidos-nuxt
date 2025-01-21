@@ -5,9 +5,7 @@ const store = useSidebarSlideStore()
 </script>
 
 <template>
-  <aside
-    class="bg-sidebar px-4 h-full relative"
-  >
+  <aside class="bg-sidebar px-4 h-full relative">
     <LayoutHeader />
     <LayoutMenu />
     <LayoutFooter />

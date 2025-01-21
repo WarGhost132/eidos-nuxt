@@ -20,13 +20,13 @@ const handleClick = () => {
 <template>
   <button
     ref="buttonRef"
-    @click="handleClick"
-    @keydown.esc="popoverStore.hide()"
     class="flex items-center justify-center p-[10px] rounded-xl hover:opacity-70"
     :class="{
       'bg-secondary': !popoverStore.isVisible,
-      'bg-white': popoverStore.isVisible
+      'bg-white': popoverStore.isVisible,
     }"
+    @click="handleClick"
+    @keydown.esc="popoverStore.hide()"
   >
     <Icon
       name="tabler:filter"
@@ -40,6 +40,10 @@ const handleClick = () => {
   <button
     class="bg-secondary flex items-center justify-center p-[10px] rounded-xl hover:opacity-70"
   >
-    <Icon name="ic:outline-filter-list" size="24" class="text-[#2F3144]/[0.6]" />
+    <Icon
+      name="ic:outline-filter-list"
+      size="24"
+      class="text-[#2F3144]/[0.6]"
+    />
   </button>
 </template>
