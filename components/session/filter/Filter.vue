@@ -5,19 +5,23 @@ const buttonRef = ref<HTMLElement | null>(null)
 const popoverStore = usePopoverStore()
 
 const handleClick = () => {
-  if (buttonRef.value) {
-    const rect = buttonRef.value.getBoundingClientRect()
-    console.log(rect.bottom + window.scrollY, rect.left)
-    popoverStore.show(rect.bottom + window.scrollY, rect.left)
+  if (popoverStore.isVisible) {
+    popoverStore.hide()
+  } else {
+    if (buttonRef.value) {
+      const rect = buttonRef.value.getBoundingClientRect()
+      console.log(rect.bottom + window.scrollY, rect.left)
+      popoverStore.show(rect.bottom + window.scrollY, rect.left)
+    }
   }
 }
-
 </script>
 
 <template>
   <button
     ref="buttonRef"
     @click="handleClick"
+    @keydown.esc="popoverStore.hide()"
     class="flex items-center justify-center p-[10px] rounded-xl hover:opacity-70"
     :class="{
       'bg-secondary': !popoverStore.isVisible,

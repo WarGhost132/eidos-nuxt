@@ -123,6 +123,8 @@ import { useSort } from '~/hooks/useSort'
 import { useSearchStore } from '~/store/search-store'
 import { useData } from '~/hooks/useData'
 
+const filterStore = useFilterStore()
+
 const searchStore = useSearchStore()
 
 const tableData = await useData()
@@ -137,9 +139,18 @@ const {
 } = useSort(tableData.value)
 
 const filteredData = computed(() => {
-  return sortedData.value.filter(item =>
-    item.name.toLowerCase().includes(searchStore.searchQuery.toLowerCase()) ||
-    item.group.toLowerCase().includes(searchStore.searchQuery.toLowerCase())
+  return sortedData.value.filter(item => {
+    const matchesSearchQuery =
+      item.name.toLowerCase().includes(searchStore.searchQuery.toLowerCase()) ||
+      item.group.toLowerCase().includes(searchStore.searchQuery.toLowerCase())
+
+    const matchesDate = filterStore.date ? item.date.includes(filterStore.date) : true;
+    const matchesStatus = filterStore.status ? item.status.toLowerCase().includes(filterStore.status.toLowerCase()) : true;
+    const matchesType = filterStore.type ? item.type.toLowerCase().includes(filterStore.type.toLowerCase()) : true;
+    const matchesGroup = filterStore.group ? item.group.toLowerCase().includes(filterStore.group.toLowerCase()) : true;
+
+    return matchesSearchQuery && matchesDate && matchesStatus && matchesType && matchesGroup;
+    }
   )
 })
 
