@@ -12,22 +12,45 @@ const isLoadingStore = useIsLoadingStore()
 const authStore = useAuthStore()
 const router = useRouter()
 
-const login = async () => {
-  isLoadingStore.set(true)
-  await account.createEmailPasswordSession(emailRef.value, passwordRef.value)
-  const response = await account.get()
-  if (response) {
-    authStore.set({
-      email: response.email,
-      status: response.status
-    })
+const handleError = (error: unknown) => {
+  if (error instanceof Error) {
+    if (error.message === 'Invalid credentials. Please check the email and password.') {
+      authStore.setErrorMessage('Неверный email или пароль')
+    } else if (error.message === 'Invalid `password` param: Password must be between 8 and 256 characters long.') {
+      authStore.setErrorMessage('Пароль должен содержать не менее 8 символов')
+    } else {
+      authStore.setErrorMessage('Произошла ошибка при авторизации')
+    }
+  } else {
+    authStore.setErrorMessage('Произошла неизвестная ошибка')
   }
 
-  emailRef.value = ''
-  passwordRef.value = ''
+  authStore.set({ email: '', status: false, errorMessage: authStore.errorMessage })
+}
 
-  await router.push('/')
-  isLoadingStore.set(false)
+const login = async () => {
+  isLoadingStore.set(true)
+
+  try {
+    await account.createEmailPasswordSession(emailRef.value, passwordRef.value)
+    const response = await account.get()
+    if (response) {
+      authStore.set({
+        email: response.email,
+        status: response.status,
+        errorMessage: null
+      })
+    }
+
+    emailRef.value = ''
+    passwordRef.value = ''
+
+    await router.push('/')
+  } catch (error: unknown) {
+    handleError(error)
+  } finally {
+    isLoadingStore.set(false)
+  }
 }
 </script>
 
@@ -35,6 +58,8 @@ const login = async () => {
   <div class="flex items-center justify-center min-h-screen w-full">
     <div class="bg-card rounded-xl p-10 w-[400px]">
       <h1 class="text-xl font-bold text-center mb-5">Авторизация</h1>
+
+      <p v-if="authStore.errorMessage" class="text-red-500 text-center mb-4">{{ authStore.errorMessage }}</p>
 
       <form class="flex flex-col gap-4">
         <input
