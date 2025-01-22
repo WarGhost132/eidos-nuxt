@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   pages: true,
+  typescript: {
+    includeWorkspace: true,
+  },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
   modules: [
