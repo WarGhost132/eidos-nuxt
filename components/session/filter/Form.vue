@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useData } from '~/hooks/useData'
+import { useUniqueValues } from '~/hooks/useUniqueValues'
 
 interface TableDataItem {
   date: string
@@ -11,24 +12,30 @@ interface TableDataItem {
 const data: globalThis.Ref<TableDataItem[]> = await useData()
 const filterStore = useFilterStore()
 
-const uniqueDates = computed(() =>
-  data.value
-    ? [...new Set(data.value.map((item) => item.date))].sort((a, b) => {
-        const aDate = new Date(a.split('.').reverse().join('-'))
-        const bDate = new Date(b.split('.').reverse().join('-'))
-        return aDate.getTime() - bDate.getTime()
-      })
-    : []
-)
-const uniqueStatuses = computed(() =>
-  data.value ? [...new Set(data.value.map((item) => item.status))] : []
-)
-const uniqueTypes = computed(() =>
-  data.value ? [...new Set(data.value.map((item) => item.type))] : []
-)
-const uniqueGroups = computed(() =>
-  data.value ? [...new Set(data.value.map((item) => item.group))] : []
-)
+const {
+  date: uniqueDatesRaw,
+  status: uniqueStatuses,
+  type: uniqueTypes,
+  group: uniqueGroups
+} = useUniqueValues(data, [
+  'date',
+  'status',
+  'type',
+  'group'
+])
+
+const uniqueDates = computed(() => (
+  uniqueDatesRaw?.value ? sortDates(uniqueDatesRaw.value) : []
+))
+
+function sortDates(dates: string[]): string[] {
+  return dates.sort((a, b) => {
+    const aDate = new Date(a.split('.').reverse().join('-'))
+    const bDate = new Date(b.split('.').reverse().join('-'))
+
+    return aDate.getTime() - bDate.getTime()
+  })
+}
 
 function clear() {
   filterStore.date = ''

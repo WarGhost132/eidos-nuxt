@@ -15,8 +15,6 @@ const isModalOpen = ref(false)
     title="Создание новой сессии"
     @update:model-value="isModalOpen = $event"
   >
-    <div class="text-center">
-      <p>Hello World!</p>
-    </div>
+    <SessionCreateForm />
   </UiModal>
 </template>
