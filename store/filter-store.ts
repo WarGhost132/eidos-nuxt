@@ -5,13 +5,15 @@ type FilterState = {
   group: string
 }
 
+const defaultValue: FilterState = {
+  date: '',
+  status: '',
+  type: '',
+  group: '',
+}
+
 export const useFilterStore = defineStore('filter', {
-  state: (): FilterState => ({
-    date: '',
-    status: '',
-    type: '',
-    group: '',
-  }),
+  state: () => defaultValue,
   actions: {
     setFilter(key: keyof FilterState, value: string) {
       this[key] = value
