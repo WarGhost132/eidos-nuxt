@@ -1,5 +1,5 @@
 export function useSort(
-  data: any[],
+  data: Ref<any[]>,
   initialSortBy: string = 'date',
   initialSortDirection: string = 'asc'
 ) {
@@ -16,7 +16,7 @@ export function useSort(
   }
 
   const sortedData = computed(() => {
-    return [...data]
+    return [...data.value]
       .filter((item) => item && typeof item[sortBy.value] === 'string')
       .sort((a, b) => {
         const aValue = a[sortBy.value]

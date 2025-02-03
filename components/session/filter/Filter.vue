@@ -10,7 +10,6 @@ const handleClick = () => {
   } else {
     if (buttonRef.value) {
       const rect = buttonRef.value.getBoundingClientRect()
-      console.log(rect.bottom + window.scrollY, rect.left)
       popoverStore.show(rect.bottom + window.scrollY, rect.left)
     }
   }
